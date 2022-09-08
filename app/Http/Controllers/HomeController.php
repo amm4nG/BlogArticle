@@ -27,4 +27,12 @@ class HomeController extends Controller
         $artikel = Artikel::latest('id')->paginate(3);
         return view('home', compact(['artikel']));
     }
+
+    public function readMore(Request $request)
+    {
+        $article = Artikel::find($request->id);
+        return response()->json([
+            'description' => $article->description
+        ]);
+    }
 }

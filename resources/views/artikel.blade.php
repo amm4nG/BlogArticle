@@ -85,7 +85,11 @@
                                 <img class="card-img-top" id="artikel-image" src="{{ asset('storage/' . $a->image) }}">
                                 <div class="card-body">
                                     <a class="nav-link" href=""><i class="bi bi-heart"></i> Like</a>
-                                    <p class="card-text mt-3" id="description-artikel">{{ $a->description }}</p>
+                                    @php
+                                        $description = substr($a->description, 0, 100);
+                                    @endphp
+                                    <p class="card-text mt-3" id="description-artikel">{{ $description }}..... <a
+                                            href="">Read More</a> </p>
                                 </div>
 
                             </div>

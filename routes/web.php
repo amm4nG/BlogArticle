@@ -23,5 +23,6 @@ Auth::routes();
 //router admin
 Route::group(['middleware' => ['CekUser:admin']], function () {
     Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('more', [App\Http\Controllers\HomeController::class, 'readMore'])->name('more');
     Route::resource('artikel', ArtikelController::class);
 });

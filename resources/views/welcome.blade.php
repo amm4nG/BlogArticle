@@ -19,7 +19,7 @@
                             <div class="card mt-3">
                                 <img class="card-img-top" id="artikel-image" src="{{ asset('storage/' . $a->image) }}">
                                 <div class="card-body">
-                                    <a class="nav-link" href=""><i class="bi bi-heart"></i> Like</a>
+                                    <a class="nav-link" href="{{ url('login') }}"><i class="bi bi-heart"></i> Like</a>
                                     <p class="card-text mt-3" id="description-artikel">{{ $a->description }}</p>
                                 </div>
                             </div>

@@ -11,9 +11,17 @@
                                 <img class="card-img-top" src="{{ asset('storage/' . $a->image) }}" alt="...">
                                 <div class="card-body">
                                     <a class="nav-link" href=""><i class="bi bi-heart"></i> Like</a>
-                                    <p class="card-text mt-3" id="description-artikel">{{ $a->description }}</p>
-                                    <a class="nav-link text-primary" href="">
-                                        Detail <i class="bi text-primary bi-arrow-right"></i></a>
+                                    @php
+                                        $description = substr($a->description, 0, 100);
+                                    @endphp
+                                    <form id="form-read-more" action="">
+                                        <input id="more-article-{{ $a->id }}" type="hidden"
+                                            value="{{ $a->id }}">
+                                        <p class="card-text mt-3" id="description-artikel-{{ $a->id }}">
+                                            {{ $description }} .....
+                                            <a id="read-more-{{ $a->id }}" href="">Selengkapnya</a>
+                                        </p>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -28,4 +36,35 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    @foreach ($artikel as $article)
+        <script>
+            //read more
+            function readMore() {
+                $("#read-more-{{ $article->id }}").on('click', function(e) {
+                    e.preventDefault()
+                    let id = $("#more-article-{{ $article->id }}").val()
+                    $.ajax({
+                        url: "{{ route('more') }}",
+                        type: "GET",
+                        data: {
+                            id: id
+                        },
+                        success: function(response) {
+                            $("#description-artikel-{{ $article->id }}").html(response.description)
+                        },
+                        error: function() {
+                            console.log('Error')
+                        }
+                    })
+                })
+            }
+            //end function read more
+
+            //runing funtion
+            readMore()
+            //end running function
+        </script>
+    @endforeach
 @endsection
