@@ -55,7 +55,7 @@
                             $("#description-artikel-{{ $article->id }}").html(response.description)
                         },
                         error: function() {
-                            console.log('Error')
+                            console.log('Terjadi Kesalahan')
                         }
                     })
                 })
