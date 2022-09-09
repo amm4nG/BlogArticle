@@ -12,4 +12,8 @@ class ControllerHalamanUtama extends Controller
         $articles = Artikel::latest('id')->paginate(5);
         return view('welcome', compact(['articles']));
     }
+
+    public function readMore()
+    {
+    }
 }

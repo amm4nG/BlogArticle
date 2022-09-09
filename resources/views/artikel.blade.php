@@ -88,10 +88,12 @@
                                     @php
                                         $description = substr($a->description, 0, 100);
                                     @endphp
-                                    <p class="card-text mt-3" id="description-artikel">{{ $description }}..... <a
-                                            href="">Read More</a> </p>
+                                    <p class="card-text mt-3" id="description-artikel-{{ $a->id }}">
+                                        {{ $description }} .....
+                                        <a data-bs-toggle="modal" data-bs-target="#read-more-{{ $a->id }}"
+                                            href="">Read More</a>
+                                    </p>
                                 </div>
-
                             </div>
                         </div>
                     @empty
@@ -105,6 +107,35 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    @foreach ($artikel as $a)
+        <div class="modal fade" id="read-more-{{ $a->id }}" aria-labelledby="exampleModalLabel" aria-hidden="true"
+            tabindex="-1">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">LITA' MANDAR</h5>
+                        <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card mt-3">
+                            <img class="card-img-top" src="{{ asset('storage/' . $a->image) }}">
+                            <div class="card-body">
+                                <a class="nav-link" href=""><i class="bi bi-heart"></i> Like</a>
+                                <p class="card-text mt-3" id="">{{ $a->description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" data-bs-dismiss="modal" type="button">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+    <!-- End Modal -->
+
 @endsection
 @section('script')
     <script>

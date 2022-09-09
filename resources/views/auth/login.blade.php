@@ -3,14 +3,12 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-8 position-absolute top-50 start-50 translate-middle">
                 <div class="card">
-                    <div class="card-header">{{ __('') }}</div>
-
-                    <div class="card-body">
+                    <h4 class="text-center text-uppercase fw-bold font-monospace mt-3">Login</h4>
+                    <div class="card-body p-3">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-
                             <div class="row mb-3">
                                 <label class="col-md-4 col-form-label text-md-end"
                                     for="email">{{ __('Email Address') }}</label>
@@ -44,7 +42,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            {{-- <div class="row mb-3">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="form-check">
                                         <input class="form-check-input" id="remember" name="remember" type="checkbox"
@@ -55,18 +53,18 @@
                                         </label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
-                                    <button class="btn btn-primary" type="submit">
+                                    <button class="btn btn-primary mt-3" type="submit">
                                         {{ __('Login') }} <i class="bi bi-box-arrow-in-right"></i>
                                     </button>
 
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{-- <a class="btn btn-link" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
-                                        </a>
+                                        </a> --}}
                                     @endif
                                 </div>
                             </div>
