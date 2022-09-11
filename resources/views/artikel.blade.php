@@ -29,7 +29,7 @@
                 <!-- button upload artikel -->
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-sm-6">
-                        <a class="btn btn-outline-info rounded-pill form-control" data-bs-toggle="modal"
+                        <a class="btn btn-outline-primary rounded-pill form-control" data-bs-toggle="modal"
                             data-bs-target="#artikel-baru" href="">New Article</a>
                     </div>
                 </div>
@@ -52,6 +52,7 @@
                                 {{-- form upload postingan --}}
                                 <form id="artikel-form" enctype="multipart/form-data">
                                     @csrf
+                                    <input id="id_user" name="id_user" type="hidden" value="{{ Auth::user()->id }}">
                                     <div class="form-floating">
                                         <textarea class="form-control mb-2" id="description" name="description" style="height: 100px"
                                             placeholder="Leave a comment here"></textarea>
@@ -104,6 +105,7 @@
                     @endforelse
                 </div>
                 <!-- end card artikel -->
+
             </div>
         </div>
     </div>

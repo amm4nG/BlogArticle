@@ -64,7 +64,7 @@
                                     <div class="modal-footer">
                                     </div>
                                 @else
-                                    @if (Auth::user()->level == 'admin')
+                                    @if (Auth::user()->level == 'user')
                                         <a class="nav-link fs-5" href="{{ url('home') }}">Home</a>
                                         <a class="nav-link mt-3 fs-5" href="{{ route('artikel.index') }}">Articles</a>
                                     @endif

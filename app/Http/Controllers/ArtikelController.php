@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Artikel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ArtikelController extends Controller
 {
     public function index()
     {
-        $artikel = Artikel::latest('id')->get();
+        $artikel = Artikel::where('id_user', Auth::user()->id)->latest('id')->get();
         return view('artikel', compact(['artikel']));
     }
 
@@ -34,8 +35,8 @@ class ArtikelController extends Controller
                 $path = '';
             }
             $artikel = new Artikel();
+            $artikel->id_user = $request->id_user;
             $artikel->description = $request->description;
-            // $artikel->date = date('d F Y, h:i:s A');
             $artikel->image = $path;
             $artikel->save();
             return response()->json([
